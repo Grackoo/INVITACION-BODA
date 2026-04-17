@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Nuestra Aventura - Ricardo y Lizeth</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Animated Balloons Container -->
+    <div id="balloons-container" class="balloons-container"></div>
+
+    <main class="app-container">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="carousel-container" id="hero-carousel">
+                <div class="carousel-slide active" style="background-image: url('assets/hero_bg1.png');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/hero_bg2.png');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/hero_bg3.png');"></div>
+                <!-- Duplicate bg1 as 4th image since we generated 3 backgrounds to fulfill 4-image requirement or just cycle through 3. Wait, plan says 4 images. I'll use a CSS gradient as 4th if wait, I'll just reuse bg1 with a slight transform or just 3 images cycling is fine. The user asked for a 4 image carousel. I will copy bg2 as bg4 for symmetry. -->
+                <div class="carousel-slide" style="background-image: url('assets/hero_bg2.png');"></div>
+            </div>
+            <div class="hero-content">
+                <h1 class="adventure-title">Ricardo & Lizeth</h1>
+                <p class="subtitle">Nuestra mayor aventura comienza...</p>
+            </div>
+            <div class="clouds-overlay"></div>
+        </section>
+
+        <!-- Countdown Section -->
+        <section class="countdown-section">
+            <h2 class="section-title">Faltan exactamente...</h2>
+            <div class="countdown-timer" id="countdown">
+                <div class="time-box">
+                    <span class="number" id="days">00</span>
+                    <span class="label">Días</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="hours">00</span>
+                    <span class="label">Horas</span>
+                </div>
+                <div class="time-box">
+                    <span class="number" id="minutes">00</span>
+                    <span class="label">Minutos</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Logistics Section -->
+        <section class="logistics-section">
+            <div class="postcard">
+                <div class="stamp-container">
+                    <div class="stamp"></div>
+                </div>
+                <h3 class="postcard-title">La Ceremonia</h3>
+                <p class="postcard-text">Nos encantaría que nos acompañes a darnos el sí.</p>
+                <p class="postcard-time"><strong>Hora:</strong> 4:00 PM</p>
+                <a href="https://share.google/d8vUqhsrPdVE9ovmw" target="_blank" class="btn primary-btn">Ir a La Parroquia</a>
+            </div>
+
+            <div class="postcard">
+                <div class="stamp-container">
+                    <div class="stamp"></div>
+                </div>
+                <h3 class="postcard-title">La Recepción</h3>
+                <p class="postcard-text">¡Prepara tus mejores pasos para celebrar!</p>
+                <p class="postcard-time"><strong>Hora:</strong> 6:00 PM</p>
+                <a href="https://maps.app.goo.gl/5WpTc13Co7ky7E479" target="_blank" class="btn primary-btn">Ir a La Recepción</a>
+            </div>
+        </section>
+
+        <!-- Dress Code Section -->
+        <section class="dress-code-section">
+            <div class="elegant-card">
+                <img src="assets/ellie_badge.png" alt="Ellie Badge" class="ellie-badge">
+                <h2 class="section-title">Código de Vestimenta</h2>
+                <p class="dress-code-text">Semi-Formal</p>
+            </div>
+        </section>
+
+        <!-- Gift Registry Section -->
+        <section class="gift-registry-section">
+            <div class="postcard gift-card">
+                <h2 class="section-title">Para nuestro fondo de aventuras</h2>
+                <p class="postcard-text">El mejor regalo es tu presencia, pero si deseas tener un detalle con nosotros, puedes aportar a nuestro buzón en la recepción o vía transferencia.</p>
+                <div class="bank-details">
+                    <p><strong>Banco:</strong> BBVA Bancomer</p>
+                    <p><strong>CLABE:</strong> 0123 4567 8901 2345 67</p>
+                    <p><strong>Titular:</strong> Ricardo y Lizeth</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RSVP Form Section -->
+        <section class="rsvp-section">
+            <div class="rsvp-container">
+                <h2 class="section-title">Confirma tu Asistencia</h2>
+                <p class="rsvp-subtitle">Por favor, confírmanos antes del 1 de Noviembre.</p>
+                
+                <form id="rsvp-form" class="rsvp-form">
+                    <div class="form-group">
+                        <label for="fullName">Nombre Completo</label>
+                        <input type="text" id="fullName" name="fullName" required placeholder="Ej. Carl Fredricksen">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="phone">Teléfono (WhatsApp)</label>
+                        <input type="tel" id="phone" name="phone" pattern="[0-9]*" required placeholder="10 dígitos">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="attendance">¿Asistirás a nuestra aventura?</label>
+                        <select id="attendance" name="attendance" required>
+                            <option value="" disabled selected>Elige una opción...</option>
+                            <option value="yes">¡Sí, ahí estaré!</option>
+                            <option value="no">No podré asistir</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn submit-btn" id="submit-btn">
+                        <span>Enviar Confirmación</span>
+                    </button>
+                    
+                    <div id="form-message" class="form-message hidden"></div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <h2 class="adventure-title small">¡Gracias por ser parte de nuestra historia!</h2>
+        </footer>
+    </main>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+</html>

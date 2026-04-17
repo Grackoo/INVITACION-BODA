@@ -1,0 +1,451 @@
+/* CSS Variables para Tema UP */
+:root {
+    --color-wood: #8B5A2B;
+    --color-wood-dark: #5e3b1a;
+    --color-wood-light: #CD853F;
+    --color-sky: #87CEEB;
+    --color-sky-light: #E0F6FF;
+    --color-red: #FF4500;
+    --color-yellow: #FFD700;
+    --color-blue: #1E90FF;
+    --color-magenta: #FF00FF;
+    --color-text: #333333;
+    --color-bg-paper: #FFFdf5;
+    
+    --font-heading: 'Caveat', cursive;
+    --font-body: 'Quicksand', sans-serif;
+    
+    --shadow-soft: 0 8px 30px rgba(0,0,0,0.12);
+    --shadow-card: 0 4px 15px rgba(0,0,0,0.1);
+    --border-radius: 16px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-text);
+    background: linear-gradient(180deg, var(--color-sky) 0%, var(--color-sky-light) 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Contenedor principal estilo mobile-first */
+.app-container {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+    background: transparent;
+    padding-bottom: 40px;
+}
+
+/* === BACKGROUND BALLOONS === */
+.balloons-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.balloon {
+    position: absolute;
+    bottom: -100px;
+    width: 40px;
+    height: 50px;
+    border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+    animation: floatUp 15s linear infinite;
+    opacity: 0.8;
+}
+
+.balloon::before {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 8px solid currentColor;
+}
+
+.balloon::after {
+    content: '';
+    position: absolute;
+    bottom: -30px;
+    left: 50%;
+    width: 1px;
+    height: 25px;
+    background: rgba(255,255,255,0.6);
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(-5deg);
+    }
+    50% {
+        transform: translateY(-50vh) rotate(5deg);
+    }
+    100% {
+        transform: translateY(-120vh) rotate(-5deg);
+    }
+}
+
+/* === TIPOGRAFÍAS === */
+.adventure-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    color: #fff;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+
+.adventure-title.small {
+    font-size: 2.5rem;
+    color: var(--color-wood-dark);
+    text-align: center;
+    text-shadow: none;
+}
+
+.section-title {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    color: var(--color-wood-dark);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* === HERO SECTION === */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    max-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 80px;
+    overflow: hidden;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    box-shadow: var(--shadow-soft);
+    background-color: var(--color-sky);
+}
+
+.carousel-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.carousel-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out; /* Smooth fade! */
+}
+
+.carousel-slide.active {
+    opacity: 1;
+}
+
+.hero-content {
+    text-align: center;
+    padding: 0 20px;
+    z-index: 2;
+    background: rgba(0,0,0,0.3);
+    border-radius: 20px;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    width: 90%;
+}
+
+.hero-content .subtitle {
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* === COMÚN A SECCIONES === */
+section {
+    padding: 40px 20px;
+}
+
+/* === COUNTDOWN SECTION === */
+.countdown-section {
+    margin-top: -30px;
+    position: relative;
+    z-index: 5;
+}
+
+.countdown-timer {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.time-box {
+    background: var(--color-wood);
+    color: white;
+    padding: 15px 10px;
+    border-radius: 12px;
+    width: 80px;
+    text-align: center;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.3), var(--shadow-card);
+    border: 2px solid var(--color-wood-light);
+}
+
+.time-box .number {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+    font-family: monospace;
+}
+
+.time-box .label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* === POSTCARDS (LOGISTICS & REGISTRY) === */
+.postcard {
+    background: var(--color-bg-paper);
+    padding: 30px 20px;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-card);
+    margin-bottom: 25px;
+    position: relative;
+    border: 1px solid rgba(0,0,0,0.05); /* Paper edge */
+}
+
+/* Vintage postcard stamp */
+.stamp-container {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 50px;
+    padding: 3px;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    border: 1px dotted #ccc;
+}
+
+.stamp {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-sky-light);
+    background-image: radial-gradient(var(--color-sky) 20%, transparent 20%),
+                      radial-gradient(var(--color-wood-light) 20%, transparent 20%);
+    background-size: 10px 10px;
+    background-position: 0 0, 5px 5px;
+}
+
+.postcard-title {
+    font-family: var(--font-heading);
+    font-size: 2rem;
+    color: var(--color-wood-dark);
+    margin-bottom: 10px;
+}
+
+.postcard-text {
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: var(--color-text);
+}
+
+.postcard-time {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    border-left: 3px solid var(--color-wood-light);
+}
+
+/* === BOTONES === */
+.btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    text-align: center;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+    cursor: pointer;
+    border: none;
+}
+
+.primary-btn {
+    background: var(--color-wood);
+    color: white;
+    box-shadow: 0 4px 10px rgba(139, 90, 43, 0.3);
+}
+
+.primary-btn:active {
+    transform: scale(0.98);
+    box-shadow: 0 2px 5px rgba(139, 90, 43, 0.3);
+}
+
+/* === DRESS CODE === */
+.dress-code-section {
+    text-align: center;
+}
+
+.elegant-card {
+    background: rgba(255,255,255,0.6);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.8);
+    border-radius: var(--border-radius);
+    padding: 40px 20px;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ellie-badge {
+    width: 120px;
+    height: auto;
+    margin-bottom: 15px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
+    animation: slightSwing 4s ease-in-out infinite alternate;
+    transform-origin: top center;
+}
+
+@keyframes slightSwing {
+    0% { transform: rotate(-5deg); }
+    100% { transform: rotate(5deg); }
+}
+
+.dress-code-text {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--color-wood-dark);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* === GIFT REGISTRY === */
+.gift-card {
+    text-align: center;
+}
+.bank-details {
+    background: rgba(139, 90, 43, 0.05);
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 20px;
+    text-align: left;
+    border: 1px dashed var(--color-wood-light);
+}
+.bank-details p {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+}
+
+/* === RSVP FORM === */
+.rsvp-container {
+    background: white;
+    border-radius: var(--border-radius);
+    padding: 30px 20px;
+    box-shadow: var(--shadow-soft);
+}
+
+.rsvp-subtitle {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #666;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--color-wood-dark);
+}
+
+.form-group input, 
+.form-group select {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid #eee;
+    border-radius: 12px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+    background: #fafafa;
+}
+
+.form-group input:focus, 
+.form-group select:focus {
+    outline: none;
+    border-color: var(--color-wood-light);
+    background: white;
+}
+
+.submit-btn {
+    background: var(--color-blue);
+    color: white;
+    margin-top: 10px;
+    position: relative;
+    overflow: hidden;
+}
+
+.submit-btn.loading {
+    background: #ccc;
+    pointer-events: none;
+}
+
+.form-message {
+    margin-top: 15px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.form-message.hidden {
+    display: none;
+}
+
+.form-message.success {
+    background: #d4edda;
+    color: #155724;
+}
+
+.form-message.error {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+/* Footer */
+.footer {
+    padding: 40px 20px 80px;
+}
