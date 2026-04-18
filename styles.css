@@ -140,7 +140,9 @@ body {
     overflow: hidden;
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
-    box-shadow: var(--shadow-soft);
+    border: 12px solid #fff;
+    border-top: none;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
 }
 
 .carousel-container {
@@ -161,11 +163,13 @@ body {
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out; /* Smooth fade! */
+    transform: scale(1.2);
+    transition: opacity 1.5s ease-in-out, transform 1.5s ease-in-out; /* Smooth fade and vintage zoom! */
 }
 
 .carousel-slide.active {
     opacity: 1;
+    transform: scale(1);
 }
 
 .hero-content {
