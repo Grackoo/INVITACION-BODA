@@ -46,18 +46,45 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
 
 
-    // --- 3. BACKGROUND BALLOONS ANIMATION (DESACTIVADO A FAVOR DEL FONDO ESTÁTICO) ---
-    /*
+    // --- 3. BACKGROUND MINI HOUSES ANIMATION ---
     const balloonsContainer = document.getElementById('balloons-container');
-    const balloonColors = ['#FF4500', '#FFD700', '#1E90FF', '#FF00FF', '#32CD32']; // Rojo, Amarillo, Azul, Magenta, Verde
-
-    function createBalloon() {
+    
+    function createMiniHouse() {
         if (!balloonsContainer) return;
-        const balloon = document.createElement('div');
-...
-    // Generate new balloons periodically
-    setInterval(createBalloon, 3500);
-    */
+        const house = document.createElement('div');
+        house.classList.add('mini-house');
+
+        const leftPosition = Math.random() * 100; // 0 to 100 vw
+        
+        // Factor de profundidad / tamaño (0.0 a 1.0)
+        // Pequeño = background (lento), Grande = foreground (rápido)
+        const sizeFactor = Math.random(); 
+        const sizePx = 40 + (sizeFactor * 80); // 40px hasta 120px ancho
+        
+        house.style.width = `${sizePx}px`;
+        house.style.height = `${sizePx * 1.5}px`; 
+        
+        // Velocidad con parallax inverso (los grandes van más rápido que los pequeños del fo ndo)
+        const animationDuration = 30 - (sizeFactor * 15); // de 30s a 15s
+        
+        house.style.left = `${leftPosition}vw`;
+        house.style.animationDuration = `${animationDuration}s`;
+
+        balloonsContainer.appendChild(house);
+
+        // Remover cuando termine su vuelo
+        setTimeout(() => {
+            house.remove();
+        }, animationDuration * 1000);
+    }
+
+    // Sembrar una armada inicial (para que no esté vacío al inicio)
+    for (let i = 0; i < 15; i++) {
+        setTimeout(createMiniHouse, Math.random() * 5000);
+    }
+    
+    // Generación continua e incesante de casitas miniaturas
+    setInterval(createMiniHouse, 900);
 
 
     // --- 4. RSVP FORM SUBMISSION ---
