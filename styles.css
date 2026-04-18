@@ -36,6 +36,43 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
+/* === ANIMATED HOUSE BACKGROUND === */
+#animated-bg {
+    position: fixed;
+    top: -10%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    background: url('assets/main_bg.png') no-repeat center center;
+    background-size: cover;
+    z-index: 0;
+    pointer-events: none;
+    animation: complexFloatingHouse 16s ease-in-out infinite;
+}
+
+@keyframes complexFloatingHouse {
+    0% { 
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg); 
+        filter: hue-rotate(0deg) contrast(1);
+    }
+    25% { 
+        transform: translateY(-25px) translateX(15px) scale(1.02) rotate(1.5deg); 
+        filter: hue-rotate(8deg) contrast(1.05);
+    }
+    50% { 
+        transform: translateY(-10px) translateX(-10px) scale(1.01) rotate(-1deg); 
+        filter: hue-rotate(0deg) contrast(1);
+    }
+    75% { 
+        transform: translateY(-35px) translateX(-15px) scale(1.03) rotate(-2deg); 
+        filter: hue-rotate(-8deg) contrast(1.05);
+    }
+    100% { 
+        transform: translateY(0) translateX(0) scale(1) rotate(0deg); 
+        filter: hue-rotate(0deg) contrast(1);
+    }
+}
+
 /* Contenedor principal estilo mobile-first */
 .app-container {
     width: 100%;

@@ -46,39 +46,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateCountdown, 1000);
 
 
-    // --- 3. BACKGROUND BALLOONS ANIMATION ---
+    // --- 3. BACKGROUND BALLOONS ANIMATION (DESACTIVADO A FAVOR DEL FONDO ESTÁTICO) ---
+    /*
     const balloonsContainer = document.getElementById('balloons-container');
     const balloonColors = ['#FF4500', '#FFD700', '#1E90FF', '#FF00FF', '#32CD32']; // Rojo, Amarillo, Azul, Magenta, Verde
 
     function createBalloon() {
         if (!balloonsContainer) return;
         const balloon = document.createElement('div');
-        balloon.classList.add('balloon');
-
-        // Randomized properties
-        const leftPosition = Math.random() * 100; // 0 to 100 vw
-        const animationDuration = Math.random() * 8 + 12; // 12s to 20s
-        const color = balloonColors[Math.floor(Math.random() * balloonColors.length)];
-
-        balloon.style.left = `${leftPosition}vw`;
-        balloon.style.animationDuration = `${animationDuration}s`;
-        balloon.style.color = color;
-        balloon.style.backgroundColor = color;
-
-        balloonsContainer.appendChild(balloon);
-
-        // Remove balloon after animation finishes (duration + a little buffer)
-        setTimeout(() => {
-            balloon.remove();
-        }, (animationDuration * 1000) + 1000);
-    }
-
-    // Initial batch
-    for (let i = 0; i < 5; i++) {
-        setTimeout(createBalloon, i * 2000);
-    }
+...
     // Generate new balloons periodically
     setInterval(createBalloon, 3500);
+    */
 
 
     // --- 4. RSVP FORM SUBMISSION ---
@@ -95,28 +74,29 @@ document.addEventListener('DOMContentLoaded', () => {
             // Native validation check (HTML5) is handled automatically, but we can do extra checks if we want.
             const formData = new FormData(rsvpForm);
             
+            // Convertimos la data a URLSearchParams para compatibilidad perfecta con Apps Script (e.parameter)
+            const data = new URLSearchParams(formData);
+            
             // UI feedback
             submitBtn.classList.add('loading');
             submitBtn.innerHTML = '<span>Enviando...</span>';
             formMessage.className = 'form-message hidden';
 
             try {
-                // Post to Google Apps Script
-                const response = await fetch(googleAppsScriptURL, {
+                // Post to Google Apps Script con mode no-cors para evitar el preflight y bloqueos de navegador
+                await fetch(googleAppsScriptURL, {
                     method: 'POST',
-                    body: formData
+                    mode: 'no-cors',
+                    body: data
                 });
 
-                if (response.ok) {
-                    formMessage.textContent = '¡Gracias! Hemos recibido tu confirmación correctamente.';
-                    formMessage.className = 'form-message success';
-                    rsvpForm.reset();
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
+                // Al usar no-cors la respuesta es opaca, si no lanza error de red, la asuminos exitosa.
+                formMessage.textContent = '¡Gracias! Hemos recibido tu confirmación correctamente.';
+                formMessage.className = 'form-message success';
+                rsvpForm.reset();
             } catch (error) {
                 console.error('Error submitting form:', error);
-                formMessage.textContent = 'Hubo un error al enviar. Por favor intenta más tarde o contáctanos por WhatsApp.';
+                formMessage.textContent = 'Hubo un error de conexión al enviar. Por favor intenta más tarde.';
                 formMessage.className = 'form-message error';
             } finally {
                 submitBtn.classList.remove('loading');
