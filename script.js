@@ -74,8 +74,13 @@ document.addEventListener('DOMContentLoaded', () => {
             // Native validation check (HTML5) is handled automatically, but we can do extra checks if we want.
             const formData = new FormData(rsvpForm);
             
-            // Convertimos la data a URLSearchParams para compatibilidad perfecta con Apps Script (e.parameter)
-            const data = new URLSearchParams(formData);
+            // El backend de Google Apps Script espera leer un JSON de e.postData.contents
+            const payload = {
+                nombre: formData.get('fullName'),
+                telefono: formData.get('phone'),
+                asistencia: formData.get('attendance'),
+                mensaje: "Respuesta desde Web"
+            };
             
             // UI feedback
             submitBtn.classList.add('loading');
@@ -83,11 +88,14 @@ document.addEventListener('DOMContentLoaded', () => {
             formMessage.className = 'form-message hidden';
 
             try {
-                // Post to Google Apps Script con mode no-cors para evitar el preflight y bloqueos de navegador
+                // Post to Google Apps Script enviando la cadena JSON en el body
                 await fetch(googleAppsScriptURL, {
                     method: 'POST',
-                    mode: 'no-cors',
-                    body: data
+                    mode: 'no-cors', // Evita bloqueo CORS al navegador
+                    headers: {
+                        'Content-Type': 'text/plain' // Se usa text/plain para que no haga options preflight, e.postData.contents extraerá el texto sin problema
+                    },
+                    body: JSON.stringify(payload)
                 });
 
                 // Al usar no-cors la respuesta es opaca, si no lanza error de red, la asuminos exitosa.
