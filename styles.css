@@ -141,7 +141,6 @@ body {
     border-bottom-left-radius: 30px;
     border-bottom-right-radius: 30px;
     box-shadow: var(--shadow-soft);
-    background-color: var(--color-sky);
 }
 
 .carousel-container {
