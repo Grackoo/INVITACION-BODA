@@ -140,4 +140,27 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 5. AUDIO PLAYER LOGIC ---
+    const musicBtn = document.getElementById('music-btn');
+    const bgMusic = document.getElementById('bg-music');
+
+    if (musicBtn && bgMusic) {
+        bgMusic.volume = 0.5; // Start with half volume so it's not too loud
+
+        musicBtn.addEventListener('click', () => {
+            if (bgMusic.paused) {
+                bgMusic.play().then(() => {
+                    musicBtn.classList.add('playing');
+                    musicBtn.innerHTML = '⏸️'; 
+                }).catch(error => {
+                    console.error("Playback failed: ", error);
+                });
+            } else {
+                bgMusic.pause();
+                musicBtn.classList.remove('playing');
+                musicBtn.innerHTML = '🎵';
+            }
+        });
+    }
+
 });
