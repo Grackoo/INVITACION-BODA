@@ -276,6 +276,36 @@ section {
     border: 1px solid rgba(0,0,0,0.05); /* Paper edge */
 }
 
+.postcard::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.postcard iframe {
+    clear: both;
+    display: block;
+}
+
+/* Imagen Ceremonia tipo Postal */
+.ceremony-photo {
+    float: left;
+    width: 42%;
+    max-width: 140px;
+    height: auto;
+    margin-top: 5px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 6px solid #fff;
+    border-bottom: 24px solid #fff;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+    transform: rotate(-6deg);
+    border-radius: 2px;
+    position: relative;
+    z-index: 2;
+}
+
 /* Vintage postcard stamp */
 .stamp-container {
     position: absolute;
