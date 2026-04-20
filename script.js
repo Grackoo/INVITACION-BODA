@@ -91,6 +91,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const rsvpForm = document.getElementById('rsvp-form');
     const submitBtn = document.getElementById('submit-btn');
     const formMessage = document.getElementById('form-message');
+    
+    // Lógica condicional para el número de acompañantes
+    const attendanceSelect = document.getElementById('attendance');
+    const guestsGroup = document.getElementById('guests-group');
+    const guestsInput = document.getElementById('guests');
+    
+    if (attendanceSelect && guestsGroup && guestsInput) {
+        attendanceSelect.addEventListener('change', (e) => {
+            if (e.target.value === 'yes') {
+                guestsGroup.style.display = 'block';
+                guestsInput.required = true;
+            } else {
+                guestsGroup.style.display = 'none';
+                guestsInput.required = false;
+                guestsInput.value = ''; // limpiar en caso de que cambie a no asiste
+            }
+        });
+    }
+
     // Using user-provided script URL
     const googleAppsScriptURL = 'https://script.google.com/macros/s/AKfycby3gxt1lYxiuEADYJlqMU6aPJp62C3alXc5dJjvN7ldySGNArkFxTb_TQOkUyKghwEGbg/exec';
 
@@ -106,6 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 nombre: formData.get('fullName'),
                 telefono: formData.get('phone'),
                 asistencia: formData.get('attendance'),
+                acompanantes: formData.get('guests'),
                 mensaje: "Respuesta desde Web"
             };
             
