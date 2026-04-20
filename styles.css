@@ -312,7 +312,8 @@ section {
     width: 42%;
     max-width: 140px;
     height: auto;
-    margin-top: 65px; /* Separación del sello */
+    margin-top: -10px; /* Colocada en la esquina superior */
+    margin-right: -5px; /* Ajustada a la orilla derecha */
     margin-left: 15px;
     margin-bottom: 15px;
     background-color: #fff;
