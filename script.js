@@ -160,9 +160,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 0. WELCOME OVERLAY LOGIC ---
+    const welcomeOverlay = document.getElementById('welcome-overlay');
+    const openInvitationBtn = document.getElementById('open-invitation-btn');
+    
     // --- 5. AUDIO PLAYER LOGIC ---
     const musicBtn = document.getElementById('music-btn');
     const bgMusic = document.getElementById('bg-music');
+
+    // Manejar el botón de abrir invitación
+    if (welcomeOverlay && openInvitationBtn) {
+        openInvitationBtn.addEventListener('click', () => {
+            // Ocultar la pantalla con animación
+            welcomeOverlay.classList.add('hidden');
+            
+            // Si la música está cargada, iniciarla automáticamente
+            if (bgMusic && bgMusic.paused) {
+                bgMusic.volume = 0.5;
+                bgMusic.play().then(() => {
+                    if (musicBtn) {
+                        musicBtn.classList.add('playing');
+                        musicBtn.innerHTML = '⏸️'; 
+                    }
+                }).catch(err => {
+                    console.log("No se pudo autoiniciar la música: ", err);
+                });
+            }
+        });
+    }
 
     if (musicBtn && bgMusic) {
         bgMusic.volume = 0.5; // Start with half volume so it's not too loud
