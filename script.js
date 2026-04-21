@@ -14,8 +14,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- 2. COUNTDOWN LOGIC ---
-    // Target date from implementation plan: December 8, 2026 16:00:00 (assuming 4 PM based on ceremony time we set)
-    const targetDate = new Date('December 8, 2026 16:00:00').getTime();
+    // Target date from implementation plan: December 5, 2026 16:00:00 (assuming 4 PM based on ceremony time we set)
+    const targetDate = new Date('December 5, 2026 16:00:00').getTime();
 
     const daysEl = document.getElementById('days');
     const hoursEl = document.getElementById('hours');
