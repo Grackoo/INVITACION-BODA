@@ -596,11 +596,10 @@ section {
 }
 
 .welcome-subtitle {
-    color: var(--color-wood-dark);
+    color: var(--color-sky-light);
     font-size: 1.3rem;
     font-weight: 700;
     margin-bottom: 25px;
-    text-shadow: 0 1px 2px rgba(255,255,255,0.8);
 }
 
 .welcome-btn {
