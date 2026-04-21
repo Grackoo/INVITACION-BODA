@@ -91,11 +91,7 @@
             <div class="postcard gift-card">
                 <h2 class="section-title">Para nuestro fondo de aventuras</h2>
                 <p class="postcard-text">Lo más importante para nosotros es compartir este día contigo 💖, pero si gustas hacernos un regalito, tenemos una mesa de regalos en Mercado libre con cositas que nos encantan y que nos ayudarán a comenzar esta nueva etapa.</p>
-                <div class="bank-details">
-                    <p><strong>Banco:</strong> BBVA Bancomer</p>
-                    <p><strong>CLABE:</strong> 0123 4567 8901 2345 67</p>
-                    <p><strong>Titular:</strong> Ricardo y Lizeth</p>
-                </div>
+                <button id="open-gifts-btn" class="btn primary-btn" style="margin-top: 15px;">Ver Mesa de Regalos 🎁</button>
             </div>
         </section>
 
@@ -153,6 +149,18 @@
     <button id="music-btn" class="music-btn" aria-label="Reproducir música">
         🎵
     </button>
+
+    <!-- Gifts Modal -->
+    <div id="gifts-modal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <button id="close-modal-btn" class="close-btn">&times;</button>
+            <h2 class="section-title" style="margin-bottom: 5px;">Mesa de Regalos</h2>
+            <p class="modal-subtitle">Da clic en cualquier regalo para ir a la tienda.</p>
+            <div class="gifts-list" id="gifts-list-container">
+                <!-- Gifts se renderizan desde script.js -->
+            </div>
+        </div>
+    </div>
 
     <!-- Scripts -->
     <script src="script.js"></script>

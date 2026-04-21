@@ -183,4 +183,63 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // --- 6. GIFTS MODAL LOGIC ---
+    const giftsList = [
+        { name: "Juego De Sábanas Matrimonial Microfibra Premium", link: "https://www.mercadolibre.com.mx/p/MLM27394715" },
+        { name: "Buró Mesita De Noche Con Usb Y Cajón", link: "https://www.mercadolibre.com.mx/up/MLMU3115788539" },
+        { name: "Mueble De Tv Moderno De Madera Flotante Con Luces Led", link: "https://www.mercadolibre.com.mx/up/MLMU3841330510" },
+        { name: "Artic Jarra De Vidrio De 2.8 Lt Con Refrigerante", link: "https://www.mercadolibre.com.mx/up/MLMU720384769" },
+        { name: "Set 2 De Mesas De Centro Y Auxiliar", link: "https://www.mercadolibre.com.mx/p/MLM54484894" },
+        { name: "Lámpara de pie Moderna Rgb Inteligente", link: "https://www.mercadolibre.com.mx/p/MLM54943595" },
+        { name: "Dispensador De Agua Eléctrico Tarwik", link: "https://www.mercadolibre.com.mx/p/MLM45569075" },
+        { name: "Batidora De Mano Inmersión Con 8 Accesorios", link: "https://articulo.mercadolibre.com.mx/MLM-4032682290" },
+        { name: "Edredón Ligero King Doble Vista", link: "https://articulo.mercadolibre.com.mx/MLM-2347765935" },
+        { name: "Plancha De Ropa Con Suela Cerámica Vapor Vertical", link: "https://www.mercadolibre.com.mx/up/MLMU562816502" },
+        { name: "Buro Alto 6 Niveles con Luz Led", link: "https://www.mercadolibre.com.mx/p/MLM62062607" },
+        { name: "Ventilador De Pedestal Mytek 18 Pulgadas", link: "https://www.mercadolibre.com.mx/p/MLM18054226" },
+        { name: "Cerámica Juego De Baño 4 Piezas", link: "https://articulo.mercadolibre.com.mx/MLM-2265329525" },
+        { name: "Juego Sábanas Matrimonial Tacto Algodón Egipcio", link: "https://articulo.mercadolibre.com.mx/MLM-2052191723" },
+        { name: "Funda Cubre Sillones Sala Sofá 3pz Azul Marino", link: "https://www.mercadolibre.com.mx/p/MLM61105918" },
+        { name: "Set 6 Pzs Fundas Protectora Elástica Para Silla Comedor", link: "https://articulo.mercadolibre.com.mx/MLM-3112491480" },
+        { name: "Mantel Protector De Mesa Transparente", link: "https://www.mercadolibre.com.mx/p/MLM56674797" },
+        { name: "Set 3 Repisas Flotantes 80x20cm Dos Colores", link: "https://articulo.mercadolibre.com.mx/MLM-2471693293" }
+    ];
+
+    const openGiftsBtn = document.getElementById('open-gifts-btn');
+    const closeGiftsBtn = document.getElementById('close-modal-btn');
+    const giftsModal = document.getElementById('gifts-modal');
+    const giftsListContainer = document.getElementById('gifts-list-container');
+
+    if (openGiftsBtn && giftsModal) {
+        // Generar lista dinamicamente
+        giftsList.forEach(gift => {
+            const itemHTML = `
+                <div class="gift-item">
+                    <div class="gift-title">${gift.name}</div>
+                    <a href="${gift.link}" target="_blank" class="btn primary-btn">Ver en Mercado Libre 🛒</a>
+                </div>
+            `;
+            giftsListContainer.insertAdjacentHTML('beforeend', itemHTML);
+        });
+
+        // Eventos para abrir/cerrar
+        openGiftsBtn.addEventListener('click', () => {
+            giftsModal.classList.remove('hidden');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll al abrir modal
+        });
+
+        closeGiftsBtn.addEventListener('click', () => {
+            giftsModal.classList.add('hidden');
+            document.body.style.overflow = ''; 
+        });
+
+        // Cerrar al clickear fuera del modal
+        giftsModal.addEventListener('click', (e) => {
+            if (e.target === giftsModal) {
+                giftsModal.classList.add('hidden');
+                document.body.style.overflow = '';
+            }
+        });
+    }
+
 });
