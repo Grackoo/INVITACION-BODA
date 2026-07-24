@@ -32,12 +32,13 @@
         <!-- Hero Section -->
         <section class="hero-section">
             <div class="carousel-container" id="hero-carousel">
-                <div class="carousel-slide active" style="background-image: url('assets/carrusel0.jpg');"></div>
+                <div class="carousel-slide active" style="background-image: url('assets/imagennueva.jpeg');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/imagennueva2.jpeg');"></div>
+                <div class="carousel-slide" style="background-image: url('assets/carrusel0.jpg');"></div>
                 <div class="carousel-slide" style="background-image: url('assets/Carrusel3.jpg');"></div>
                 <div class="carousel-slide" style="background-image: url('assets/carrusel1.jpg');"></div>
                 <div class="carousel-slide" style="background-image: url('assets/carrusel2.jpg');"></div>
                 <div class="carousel-slide" style="background-image: url('assets/carrusel4.jpg');"></div>
-                <div class="carousel-slide" style="background-image: url('assets/carrusel5.png');"></div>
             </div>
             <div class="hero-content">
                 <h1 class="adventure-title">Ricardo <br> & <br> Lizeth</h1>
@@ -96,6 +97,7 @@
                 <img src="assets/ellie_badge.png" alt="Ellie Badge" class="ellie-badge">
                 <h2 class="section-title">Código de Vestimenta</h2>
                 <p class="dress-code-text">Semi Formal</p>
+                <p class="dress-code-note">(Mujeres: favor de evitar el color blanco y rojo)</p>
             </div>
         </section>
 
@@ -113,6 +115,11 @@
             <div class="rsvp-container">
                 <h2 class="section-title">Confirma tu Asistencia</h2>
                 <p class="rsvp-subtitle">Por favor, confírmanos antes del 1 de Noviembre.</p>
+                
+                <div class="rsvp-notice-box">
+                    <p class="rsvp-notice-text">📌 Se tomará en cuenta la confirmación para apartar tu lugar.</p>
+                    <p class="rsvp-notice-subtext">(Favor de especificar si van a asistir niños)</p>
+                </div>
                 
                 <form id="rsvp-form" class="rsvp-form">
                     <div class="form-group">
@@ -136,7 +143,12 @@
                     
                     <div class="form-group" id="guests-group" style="display: none;">
                         <label for="guests">Número de personas (Contándote a ti)</label>
-                        <input type="number" id="guests" name="guests" min="0" max="10" placeholder="Ej. 2">
+                        <input type="number" id="guests" name="guests" min="1" max="10" placeholder="Ej. 2">
+                        
+                        <div style="margin-top: 15px;">
+                            <label for="kids">¿Asistirán niños? (Especificar cuántos y edades)</label>
+                            <input type="text" id="kids" name="kids" placeholder="Ej. 1 niño (5 años) / Sin niños">
+                        </div>
                     </div>
                     
                     <button type="submit" class="btn submit-btn" id="submit-btn">

@@ -96,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const attendanceSelect = document.getElementById('attendance');
     const guestsGroup = document.getElementById('guests-group');
     const guestsInput = document.getElementById('guests');
+    const kidsInput = document.getElementById('kids');
     
     if (attendanceSelect && guestsGroup && guestsInput) {
         attendanceSelect.addEventListener('change', (e) => {
@@ -106,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 guestsGroup.style.display = 'none';
                 guestsInput.required = false;
                 guestsInput.value = ''; // limpiar en caso de que cambie a no asiste
+                if (kidsInput) kidsInput.value = '';
             }
         });
     }
@@ -126,6 +128,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 telefono: formData.get('phone'),
                 asistencia: formData.get('attendance'),
                 acompanantes: formData.get('guests'),
+                ninos: formData.get('kids') || '',
                 mensaje: "Respuesta desde Web"
             };
             

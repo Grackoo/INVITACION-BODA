@@ -464,6 +464,14 @@ section {
     text-transform: uppercase;
 }
 
+.dress-code-note {
+    font-size: 0.95rem;
+    color: #b33939;
+    font-weight: 600;
+    margin-top: 8px;
+    font-style: italic;
+}
+
 /* === GIFT REGISTRY === */
 .gift-card {
     text-align: center;
@@ -491,8 +499,30 @@ section {
 
 .rsvp-subtitle {
     text-align: center;
-    margin-bottom: 25px;
+    margin-bottom: 15px;
     color: #666;
+}
+
+.rsvp-notice-box {
+    background: rgba(139, 90, 43, 0.08);
+    border: 1px dashed var(--color-wood-light);
+    border-radius: 10px;
+    padding: 12px 15px;
+    margin-bottom: 22px;
+    text-align: center;
+}
+
+.rsvp-notice-text {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-wood-dark);
+    margin-bottom: 4px;
+}
+
+.rsvp-notice-subtext {
+    font-size: 0.88rem;
+    color: #555;
+    font-style: italic;
 }
 
 .form-group {
